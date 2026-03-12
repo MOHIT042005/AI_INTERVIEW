@@ -7,12 +7,9 @@ function DashboardPreview(){
 
       <h2>Platform Dashboard</h2>
 
-      <img
-      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
-      />
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" style={{width:"70%"}}/>
 
     </div>
-
   )
 }
 

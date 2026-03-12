@@ -106,3 +106,57 @@ body{
   border-radius:12px;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
+
+/* Pricing Section */
+
+.pricing{
+  padding:80px;
+  text-align:center;
+  background:#ffffff;
+}
+
+.pricing h2{
+  font-size:36px;
+}
+
+.pricing-grid{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:40px;
+}
+
+/* price cards */
+
+.price-card{
+  width:260px;
+  background:white;
+  padding:35px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  transition:0.3s;
+}
+
+.price-card:hover{
+  transform:translateY(-6px);
+}
+
+
+/* price text */
+
+.price-card h1{
+  font-size:40px;
+  color:#10b981;
+}
+
+/* button */
+
+.price-btn{
+  margin-top:15px;
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  background:#10b981;
+  color:white;
+  cursor:pointer;
+}
