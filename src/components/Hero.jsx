@@ -1,32 +1,42 @@
 import React from "react";
 
-function Hero() {
-  return (
-    <div style={styles.hero}>
-      <h1>AI-Driven Interview Simulator</h1>
-      <p>
-        Practice technical interviews with real-time evaluation and AI feedback.
-      </p>
+function Hero(){
+  return(
+    <div className="hero">
 
-      <button style={styles.button}>Start Mock Interview</button>
+      <div className="hero-text">
+
+        <h1>
+        All-In-One AI Interview Platform
+        </h1>
+
+        <p>
+        Our platform uses artificial intelligence to simulate real technical interviews and analyze candidate performance.
+        </p>
+
+        <div className="hero-buttons">
+
+          <button className="primary">
+          Request Demo
+          </button>
+
+          <button className="secondary">
+          Learn More
+          </button>
+
+        </div>
+
+      </div>
+
+      <div>
+        <img 
+        src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28"
+        width="400"
+        />
+      </div>
+
     </div>
-  );
+  )
 }
-
-const styles = {
-  hero: {
-    textAlign: "center",
-    padding: "100px 20px"
-  },
-  button: {
-    marginTop: "20px",
-    padding: "12px 25px",
-    fontSize: "16px",
-    background: "#3b82f6",
-    color: "white",
-    border: "none",
-    cursor: "pointer"
-  }
-};
 
 export default Hero;

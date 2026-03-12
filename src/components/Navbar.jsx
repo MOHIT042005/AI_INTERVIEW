@@ -1,32 +1,26 @@
 import React from "react";
 
-function Navbar() {
-  return (
-    <nav style={styles.nav}>
-      <h2>AI Interview Simulator</h2>
-      <div>
-        <button style={styles.btn}>Login</button>
-      </div>
-    </nav>
-  );
-}
+function Navbar(){
+  return(
+    <div className="navbar">
 
-const styles = {
-  nav: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "15px 40px",
-    background: "#1e293b",
-    color: "white",
-    alignItems: "center"
-  },
-  btn: {
-    padding: "8px 15px",
-    border: "none",
-    background: "#3b82f6",
-    color: "white",
-    cursor: "pointer"
-  }
-};
+      <div className="logo">
+        Intervio
+      </div>
+
+      <div className="nav-links">
+        <span>Home</span>
+        <span>About</span>
+        <span>Features</span>
+        <span>Testimonials</span>
+      </div>
+
+      <button className="start-btn">
+        Start Interview
+      </button>
+
+    </div>
+  )
+}
 
 export default Navbar;

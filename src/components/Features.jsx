@@ -1,46 +1,31 @@
-import React from "react";
-function Features() {
-  return (
-    <div style={styles.container}>
-      <h2>Platform Features</h2>
+function Features(){
+  return(
 
-      <div style={styles.grid}>
-        <div style={styles.card}>
-          <h3>Interview Simulation</h3>
-          <p>Practice with timed coding interview problems.</p>
+    <div className="features">
+
+      <h2>Features for Hiring</h2>
+
+      <div className="feature-grid">
+
+        <div className="card">
+          <h3>Question List</h3>
+          <p>Manage interview questions efficiently.</p>
         </div>
 
-        <div style={styles.card}>
-          <h3>AI Feedback</h3>
-          <p>Receive intelligent feedback on your performance.</p>
+        <div className="card">
+          <h3>Behavior Analysis</h3>
+          <p>AI analyzes candidate behaviour.</p>
         </div>
 
-        <div style={styles.card}>
-          <h3>Performance Analytics</h3>
-          <p>Track strengths and weaknesses across topics.</p>
+        <div className="card">
+          <h3>Real Time Feedback</h3>
+          <p>Instant feedback after interview.</p>
         </div>
+
       </div>
+
     </div>
-  );
+
+  )
 }
-
-const styles = {
-  container: {
-    padding: "50px 20px",
-    textAlign: "center"
-  },
-  grid: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "30px",
-    marginTop: "30px"
-  },
-  card: {
-    width: "250px",
-    padding: "20px",
-    background: "#f1f5f9",
-    borderRadius: "8px"
-  }
-};
-
 export default Features;

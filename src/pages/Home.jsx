@@ -1,16 +1,18 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Features from "../components/Features";
+import Navbar from "../components/Navbar.jsx";
+import Hero from "../components/Hero.jsx";
+import Features from "../components/Features.jsx";
+import DashboardPreview from "../components/DashboardPreview.jsx";
 
-function Home() {
-  return (
-    <div>
-      <Navbar />
-      <Hero />
-      <Features />
-    </div>
-  );
+function Home(){
+  return(
+    <>
+      <Navbar/>
+      <Hero/>
+      <Features/>
+      <DashboardPreview/>
+    </>
+  )
 }
 
 export default Home;
