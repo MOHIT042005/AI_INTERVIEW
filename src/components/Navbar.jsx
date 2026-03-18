@@ -14,7 +14,7 @@ function Navbar(){
         <span>Features</span>
         <span>Testimonials</span>
       </div>
-
+      
       <button className="start-btn">
         Start Interview
       </button>
