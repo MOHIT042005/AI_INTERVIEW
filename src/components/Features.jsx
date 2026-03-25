@@ -3,23 +3,25 @@ function Features(){
 
     <div className="features">
 
-      <h2>Features for Hiring</h2>
+      <h2>Why Choose Us</h2>
+
+      <p>Trusted by professionals at Google, Amazon, Microsoft, and more</p>
 
       <div className="feature-grid">
 
         <div className="card">
-          <h3>Question List</h3>
-          <p>Manage interview questions efficiently.</p>
+          <h3>📚 1000+ Questions</h3>
+          <p>Access curated questions from real technical interviews at top companies. Updated weekly with latest trends.</p>
         </div>
 
         <div className="card">
-          <h3>Behavior Analysis</h3>
-          <p>AI analyzes candidate behaviour.</p>
+          <h3>🤖 AI Feedback</h3>
+          <p>Get detailed performance analysis on code quality, approach, and communication. Understand your weaknesses instantly.</p>
         </div>
 
         <div className="card">
-          <h3>Real Time Feedback</h3>
-          <p>Instant feedback after interview.</p>
+          <h3>📊 Track Progress</h3>
+          <p>Monitor your improvement with analytics. See your strengths and identify areas to focus on with detailed reports.</p>
         </div>
 
       </div>
