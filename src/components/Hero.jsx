@@ -7,21 +7,21 @@ function Hero(){
       <div className="hero-text">
 
         <h1>
-        All-In-One AI Interview Platform
+          Ace Technical Interviews
         </h1>
 
         <p>
-        Our platform uses artificial intelligence to simulate real technical interviews and analyze candidate performance.
+          Practice with 1000+ real interview questions. Get instant AI feedback on your coding approach, communication, and problem-solving. Join 50,000+ professionals who've landed their dream jobs.
         </p>
 
         <div className="hero-buttons">
 
           <button className="primary">
-          Request Demo
+            Start Free Trial
           </button>
 
           <button className="secondary">
-          Learn More
+            Learn More
           </button>
 
         </div>
@@ -30,8 +30,8 @@ function Hero(){
 
       <div>
         <img 
-        src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28"
-        width="400"
+          src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=500&h=500&fit=crop"
+          alt="Interview Preparation"
         />
       </div>
 
