@@ -148,9 +148,15 @@ function Results() {
         <article className="results-panel">
           <h2>Focus areas</h2>
           <div className="results-list">
-            {highlights.map((item) => (
-              <div key={item} className="results-list-item">{item}</div>
-            ))}
+            {highlights.length > 0 ? (
+              highlights.map((item) => (
+                <div key={item} className="results-list-item">{item}</div>
+              ))
+            ) : (
+              <div className="results-list-item">
+                Keep practicing with stronger examples and clearer answer structure to create sharper feedback signals.
+              </div>
+            )}
           </div>
         </article>
       </section>

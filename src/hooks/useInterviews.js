@@ -12,7 +12,7 @@ export const useInterviews = () => {
     if (!user?.id) return;
     setLoading(true);
     try {
-      const data = await interviewService.fetchUserInterviews(user.id);
+      const data = await interviewService.fetchUserInterviews();
       setInterviews(data);
     } catch (err) {
       setError(err.message);
@@ -27,7 +27,7 @@ export const useInterviews = () => {
 
   const createInterview = async (type) => {
     try {
-      const data = await interviewService.createInterview(user.id, type);
+      const data = await interviewService.createInterview(type);
       return data;
     } catch (err) {
       setError(err.message);

@@ -1,36 +1,17 @@
-import { supabase } from '../config/supabase';
+import { apiRequest } from '../config/api';
 
 export const userService = {
-  createProfile: async (userId, email, fullName) => {
-    const { error } = await supabase.from('profiles').insert([
-      {
-        id: userId,
-        email: email,
-        full_name: fullName,
-        created_at: new Date(),
-      },
-    ]);
-
-    if (error) throw error;
+  fetchProfile: async () => {
+    const payload = await apiRequest('/profile');
+    return payload.profile;
   },
 
-  fetchProfile: async (userId) => {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single();
+  updateProfile: async (updates) => {
+    const payload = await apiRequest('/profile', {
+      method: 'PATCH',
+      body: JSON.stringify(updates),
+    });
 
-    if (error) throw error;
-    return data;
-  },
-
-  updateProfile: async (userId, updates) => {
-    const { error } = await supabase
-      .from('profiles')
-      .update(updates)
-      .eq('id', userId);
-
-    if (error) throw error;
+    return payload.profile;
   },
 };

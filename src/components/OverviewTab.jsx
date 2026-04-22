@@ -1,89 +1,140 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const OverviewTab = ({ interviews }) => {
+const QUICK_ACTIONS = [
+  {
+    type: 'technical',
+    title: 'Technical Interview',
+    description: 'Problem solving, coding logic, and tradeoffs',
+  },
+  {
+    type: 'behavioral',
+    title: 'Behavioral Interview',
+    description: 'Storytelling, clarity, and leadership examples',
+  },
+  {
+    type: 'system-design',
+    title: 'System Design',
+    description: 'Architecture thinking, scale, and decisions',
+  },
+  {
+    type: 'mock',
+    title: 'Full Mock Interview',
+    description: 'A longer session to simulate the real experience',
+  },
+];
+
+export const OverviewTab = ({ interviews, metrics }) => {
   const navigate = useNavigate();
-
-  const getAverageScore = () => {
-    if (interviews.length === 0) return 0;
-    const total = interviews.reduce((sum, interview) => sum + (interview.score || 0), 0);
-    return Math.round(total / interviews.length);
-  };
-
-  const getTotalPracticeHours = () => {
-    const totalMinutes = interviews.reduce((sum, int) => sum + (int.duration || 0), 0);
-    return Math.round((totalMinutes / 60) * 10) / 10;
-  };
-
-  const getImprovement = () => {
-    if (interviews.length <= 1) return '--';
-    const latestScore = interviews[0]?.score || 0;
-    const earliestScore = interviews[interviews.length - 1]?.score || 0;
-    return Math.round(latestScore - earliestScore);
-  };
+  const recentInterview = metrics.recentInterview;
 
   const startInterview = (type) => {
     navigate(`/interview?type=${type}`);
   };
 
   return (
-    <div className="dashboard-content">
-      <div className="stats-grid">
-        <div className="stat-card">
-          <h3>Total Interviews</h3>
-          <p className="stat-number">{interviews.length}</p>
+    <div className="dashboard-overview">
+      <section className="stats-grid dashboard-stats-grid">
+        <div className="stat-card stat-card-featured">
+          <h3>Total Sessions</h3>
+          <p className="stat-number">{metrics.totalSessions}</p>
+          <span className="stat-note">Every mock session you have started so far</span>
         </div>
         <div className="stat-card">
           <h3>Average Score</h3>
-          <p className="stat-number">{getAverageScore()}%</p>
+          <p className="stat-number">{metrics.averageScore}%</p>
+          <span className="stat-note">Calculated only from completed interview reviews</span>
+        </div>
+        <div className="stat-card">
+          <h3>Completed</h3>
+          <p className="stat-number">{metrics.completedSessions}</p>
+          <span className="stat-note">{metrics.completionRate}% of your started sessions were finished</span>
         </div>
         <div className="stat-card">
           <h3>Practice Hours</h3>
-          <p className="stat-number">{getTotalPracticeHours()}</p>
+          <p className="stat-number">{metrics.totalPracticeHours}</p>
+          <span className="stat-note">
+            Improvement {metrics.improvement === null ? 'N/A' : `${metrics.improvement}%`} from earliest to latest completed session
+          </span>
         </div>
-        <div className="stat-card">
-          <h3>Improvement</h3>
-          <p className="stat-number">{getImprovement()}%</p>
-        </div>
-      </div>
+      </section>
 
-      <div className="quick-actions">
-        <h2>Quick Start</h2>
-        <div className="action-buttons">
-          <button onClick={() => startInterview('technical')} className="action-btn">
-            Technical Interview
-          </button>
-          <button onClick={() => startInterview('behavioral')} className="action-btn">
-            Behavioral Interview
-          </button>
-          <button onClick={() => startInterview('system-design')} className="action-btn">
-            System Design
-          </button>
-          <button onClick={() => startInterview('mock')} className="action-btn">
-            Full Mock Interview
-          </button>
-        </div>
-      </div>
-
-      <div className="recent-activity">
-        <h2>Recent Interviews</h2>
-        {interviews.length > 0 ? (
-          <div className="recent-list">
-            {interviews.slice(0, 3).map((interview) => (
-              <div key={interview.id} className="recent-item">
-                <div className="interview-info">
-                  <h4>{interview.topic}</h4>
-                  <p>{interview.type} | {new Date(interview.created_at).toLocaleDateString()}</p>
-                </div>
-                <div className="interview-score">
-                  {interview.score ? `${interview.score}%` : 'In Progress'}
-                </div>
+      <div className="dashboard-main-grid">
+        <div className="dashboard-primary-column">
+          <section className="quick-actions dashboard-panel">
+            <div className="panel-head">
+              <div>
+                <span className="eyebrow">Start Strong</span>
+                <h2>Quick Start</h2>
               </div>
-            ))}
-          </div>
-        ) : (
-          <p>No interviews yet. Start your first practice session!</p>
-        )}
+              <p className="section-copy">
+                Choose the format you want to practice and jump straight in.
+              </p>
+            </div>
+            <div className="action-buttons action-buttons-rich">
+              {QUICK_ACTIONS.map((action) => (
+                <button key={action.type} onClick={() => startInterview(action.type)} className="action-btn">
+                  <strong>{action.title}</strong>
+                  <span>{action.description}</span>
+                </button>
+              ))}
+            </div>
+          </section>
+
+          {recentInterview && (
+            <section className="quick-actions dashboard-panel focus-panel">
+              <div className="panel-head">
+                <div>
+                  <span className="eyebrow">Recommended Next</span>
+                  <h2>Current focus</h2>
+                </div>
+                <p className="section-copy">
+                  Your latest session was <strong>{recentInterview.topic}</strong>. Keep momentum by retrying the
+                  same format or balancing it with a different style of practice.
+                </p>
+              </div>
+              <div className="action-buttons">
+                <button onClick={() => startInterview(recentInterview.type)} className="action-btn">
+                  Retry {recentInterview.type}
+                </button>
+                <button onClick={() => startInterview('behavioral')} className="action-btn">
+                  Balance With Behavioral
+                </button>
+              </div>
+            </section>
+          )}
+        </div>
+
+        <aside className="dashboard-secondary-column">
+          <section className="recent-activity dashboard-panel">
+            <div className="panel-head">
+              <div>
+                <span className="eyebrow">Recent Activity</span>
+                <h2>Latest interviews</h2>
+              </div>
+              <p className="section-copy">
+                A quick snapshot of your most recent sessions. Most practiced: {metrics.topPracticeType}.
+              </p>
+            </div>
+            {interviews.length > 0 ? (
+              <div className="recent-list">
+                {interviews.slice(0, 3).map((interview) => (
+                  <div key={interview.id} className="recent-item">
+                    <div className="interview-info">
+                      <h4>{interview.topic}</h4>
+                      <p>{interview.type} | {new Date(interview.created_at).toLocaleDateString()}</p>
+                    </div>
+                    <div className="interview-score">
+                      {interview.score ? `${interview.score}%` : 'In Progress'}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>No interviews yet. Start your first practice session to unlock your timeline.</p>
+            )}
+          </section>
+        </aside>
       </div>
     </div>
   );

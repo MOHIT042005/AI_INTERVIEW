@@ -1,33 +1,36 @@
-function Features(){
-  return(
-
-    <div className="features">
-
+function Features() {
+  return (
+    <div className="features" id="features">
       <h2>Why Choose Us</h2>
-
-      <p>Trusted by professionals at Google, Amazon, Microsoft, and more</p>
+      <p>Designed to make practice feel less intimidating and more repeatable.</p>
 
       <div className="feature-grid">
-
         <div className="card">
-          <h3>📚 1000+ Questions</h3>
-          <p>Access curated questions from real technical interviews at top companies. Updated weekly with latest trends.</p>
+          <h3>Structured question sets</h3>
+          <p>
+            Practice technical, behavioral, mock, quick, and skill-focused rounds without
+            needing to plan the session yourself.
+          </p>
         </div>
 
         <div className="card">
-          <h3>🤖 AI Feedback</h3>
-          <p>Get detailed performance analysis on code quality, approach, and communication. Understand your weaknesses instantly.</p>
+          <h3>Faster feedback loop</h3>
+          <p>
+            Review scores, comments, and focus areas after each session so you always know
+            what to improve next.
+          </p>
         </div>
 
         <div className="card">
-          <h3>📊 Track Progress</h3>
-          <p>Monitor your improvement with analytics. See your strengths and identify areas to focus on with detailed reports.</p>
+          <h3>Progress you can see</h3>
+          <p>
+            Keep a running history of sessions, scores, duration, and answer quality in one
+            simple workspace.
+          </p>
         </div>
-
       </div>
-
     </div>
-
-  )
+  );
 }
+
 export default Features;

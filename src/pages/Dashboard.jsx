@@ -7,6 +7,7 @@ import { OverviewTab } from '../components/OverviewTab';
 import { HistoryTab } from '../components/HistoryTab';
 import { AnalyticsTab } from '../components/AnalyticsTab';
 import { PracticeTab } from '../components/PracticeTab';
+import { deriveDashboardMetrics } from '../utils/dashboardMetrics';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -35,13 +36,19 @@ function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');
   const location = useLocation();
   const completionState = location.state;
-  const latestCompletedScore = useMemo(
-    () => (completionState?.interviewComplete ? completionState.score : interviews[0]?.score),
-    [completionState, interviews]
-  );
+  const metrics = useMemo(() => deriveDashboardMetrics(interviews), [interviews]);
+  const latestCompletedScore = completionState?.interviewComplete
+    ? completionState.score
+    : metrics.latestCompletedScore;
   const headline = interviews.length > 0
     ? 'Keep the streak alive and sharpen the weak spots.'
     : 'Start your first mock session and build your interview baseline.';
+  const tabs = [
+    { id: 'overview', label: 'Overview' },
+    { id: 'history', label: 'Interview History' },
+    { id: 'analytics', label: 'Analytics' },
+    { id: 'practice', label: 'Practice' },
+  ];
 
   if (error) {
     return (
@@ -82,11 +89,15 @@ function Dashboard() {
           <div className="dashboard-hero-metrics">
             <div className="hero-metric">
               <span>Sessions</span>
-              <strong>{interviews.length}</strong>
+              <strong>{metrics.totalSessions}</strong>
+            </div>
+            <div className="hero-metric">
+              <span>Completed</span>
+              <strong>{metrics.completedSessions}</strong>
             </div>
             <div className="hero-metric">
               <span>Latest Score</span>
-              <strong>{latestCompletedScore ? `${latestCompletedScore}%` : 'N/A'}</strong>
+              <strong>{latestCompletedScore !== null ? `${latestCompletedScore}%` : 'N/A'}</strong>
             </div>
           </div>
         </section>
@@ -99,30 +110,15 @@ function Dashboard() {
         )}
 
         <div className="dashboard-tabs">
-          <button
-            className={activeTab === 'overview' ? 'active' : ''}
-            onClick={() => setActiveTab('overview')}
-          >
-            Overview
-          </button>
-          <button
-            className={activeTab === 'history' ? 'active' : ''}
-            onClick={() => setActiveTab('history')}
-          >
-            Interview History
-          </button>
-          <button
-            className={activeTab === 'analytics' ? 'active' : ''}
-            onClick={() => setActiveTab('analytics')}
-          >
-            Analytics
-          </button>
-          <button
-            className={activeTab === 'practice' ? 'active' : ''}
-            onClick={() => setActiveTab('practice')}
-          >
-            Practice
-          </button>
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={activeTab === tab.id ? 'active' : ''}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
         {interviews.length === 0 && activeTab === 'overview' && (
@@ -136,9 +132,9 @@ function Dashboard() {
           </section>
         )}
 
-        {activeTab === 'overview' && <OverviewTab interviews={interviews} />}
+        {activeTab === 'overview' && <OverviewTab interviews={interviews} metrics={metrics} />}
         {activeTab === 'history' && <HistoryTab interviews={interviews} />}
-        {activeTab === 'analytics' && <AnalyticsTab interviews={interviews} />}
+        {activeTab === 'analytics' && <AnalyticsTab metrics={metrics} />}
         {activeTab === 'practice' && <PracticeTab />}
       </div>
     </ErrorBoundary>

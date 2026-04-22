@@ -17,10 +17,15 @@ export const DashboardHeader = () => {
 
   return (
     <div className="dashboard-header">
-      <h1>Welcome back, {user?.user_metadata?.full_name || user?.email}!</h1>
+      <div>
+        <h1>Welcome back, {user?.user_metadata?.full_name || user?.email}!</h1>
+        <p className="dashboard-header-subtitle">
+          Pick up where you left off, review past sessions, or jump into a fresh round.
+        </p>
+      </div>
       <div className="dashboard-header-actions">
         <button className="nav-btn dashboard-link" onClick={() => navigate('/profile')}>Profile</button>
-        <button className="logout-btn" onClick={handleLogout}>Logout</button>
+        <button className="nav-btn logout-btn" onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );

@@ -101,6 +101,10 @@ function Profile() {
             <div className="results-list-item">Use the results screen after every mock to spot repeating weak points.</div>
             <div className="results-list-item">Aim to improve one skill at a time instead of changing everything at once.</div>
           </div>
+          <div className="profile-account-block">
+            <span className="eyebrow">Account</span>
+            <p>{profile?.email || user?.email || 'No email available'}</p>
+          </div>
         </article>
       </section>
     </div>

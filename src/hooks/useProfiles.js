@@ -12,7 +12,7 @@ export const useProfiles = () => {
     if (!user?.id) return;
     setLoading(true);
     try {
-      const data = await userService.fetchProfile(user.id);
+      const data = await userService.fetchProfile();
       setProfile(data);
     } catch (err) {
       setError(err.message);
@@ -27,7 +27,7 @@ export const useProfiles = () => {
 
   const updateProfile = async (updates) => {
     try {
-      await userService.updateProfile(user.id, updates);
+      await userService.updateProfile(updates);
       // Refresh profile after update
       await fetchProfile();
     } catch (err) {

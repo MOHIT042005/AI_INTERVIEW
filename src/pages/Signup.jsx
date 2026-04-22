@@ -47,7 +47,7 @@ function Signup() {
     try {
       setLoading(true);
       await signup(email, password, fullName);
-      navigate('/login', { state: { message: 'Signup successful! Please login.' } });
+      navigate('/dashboard');
     } catch (err) {
       setError(err.message || 'Failed to create account');
     } finally {

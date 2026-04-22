@@ -1,4 +1,5 @@
 const DEFAULT_MODEL = import.meta.env.VITE_OLLAMA_MODEL || 'gemma3:1b';
+const OLLAMA_ENABLED = import.meta.env.VITE_ENABLE_OLLAMA !== 'false';
 const OLLAMA_CHAT_URL = '/api/ollama/api/chat';
 const OLLAMA_TIMEOUT_MS = 25000;
 
@@ -88,6 +89,14 @@ export const aiService = {
   },
 
   evaluateInterview: async ({ type, answers }) => {
+    if (!OLLAMA_ENABLED) {
+      return aiService.getFallbackEvaluation(
+        type,
+        answers,
+        'Local AI evaluation is disabled in environment settings.'
+      );
+    }
+
     const transcript = answers
       .map(
         (item, index) =>

@@ -1,16 +1,50 @@
-# React + Vite
+# AI Interview App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project now uses a React frontend with an Express + MongoDB backend instead of Supabase.
 
-Currently, two official plugins are available:
+## Environment
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Create an `.env` file in the project root with:
 
-## React Compiler
+```env
+MONGODB_URI=mongodb://127.0.0.1:27017/ai_interview
+JWT_SECRET=replace-with-a-long-random-string
+CLIENT_URL=http://localhost:5173
+PORT=5000
+VITE_API_URL=/api
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run locally
 
-## Expanding the ESLint configuration
+Install dependencies:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+```
+
+Start the Mongo API:
+
+```bash
+npm run server
+```
+
+In a second terminal, start the frontend:
+
+```bash
+npm run dev
+```
+
+The frontend talks to the backend through the Vite `/api` proxy.
+
+## Available API routes
+
+- `POST /api/auth/signup`
+- `POST /api/auth/login`
+- `GET /api/auth/me`
+- `POST /api/auth/forgot-password`
+- `GET /api/profile`
+- `PATCH /api/profile`
+- `GET /api/interviews`
+- `POST /api/interviews`
+- `GET /api/interviews/:id`
+- `PATCH /api/interviews/:id`

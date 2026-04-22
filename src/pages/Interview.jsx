@@ -287,7 +287,7 @@ function Interview() {
                     onClick={() => setIsRecording(!isRecording)}
                     disabled={evaluating}
                   >
-                    {isRecording ? 'Stop Recording' : 'Start Voice Recording'}
+                    {isRecording ? 'Stop Recording' : 'Voice Notes'}
                   </button>
                   <button
                     className="next-btn"
@@ -307,6 +307,11 @@ function Interview() {
             <div className="interview-card compact-card">
               <h3>Response tips</h3>
               <p>Use one concrete example, explain your reasoning, and end with the result or tradeoff.</p>
+              <div className="tips-row">
+                <span className="tip-chip">Situation</span>
+                <span className="tip-chip">Approach</span>
+                <span className="tip-chip">Outcome</span>
+              </div>
             </div>
           </main>
         </div>

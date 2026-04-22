@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { supabase } from '../config/supabase';
+import { clearStoredToken, getStoredToken } from '../config/api';
+import { authService } from '../services/authService';
 
 const AuthContext = createContext();
 
@@ -10,13 +11,19 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Check if user is already logged in
     const checkUser = async () => {
+      const token = getStoredToken();
+
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+
       try {
-        const { data: { session } } = await supabase.auth.getSession();
-        setUser(session?.user || null);
+        const currentUser = await authService.getCurrentUser();
+        setUser(currentUser);
       } catch (err) {
-        console.error('Error checking auth:', err);
+        clearStoredToken();
         setError(err.message);
       } finally {
         setLoading(false);
@@ -24,45 +31,14 @@ export const AuthProvider = ({ children }) => {
     };
 
     checkUser();
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user || null);
-      }
-    );
-
-    return () => subscription?.unsubscribe();
   }, []);
 
   const signup = async (email, password, fullName) => {
     try {
       setError(null);
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            full_name: fullName,
-          },
-        },
-      });
-
-      if (error) throw error;
-      
-      // Save user profile in public table (optional)
-      if (data.user) {
-        await supabase.from('profiles').insert([
-          {
-            id: data.user.id,
-            email: email,
-            full_name: fullName,
-            created_at: new Date(),
-          },
-        ]);
-      }
-
-      return data;
+      const payload = await authService.signup(email, password, fullName);
+      setUser(payload.user);
+      return payload;
     } catch (err) {
       setError(err.message);
       throw err;
@@ -72,13 +48,9 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       setError(null);
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) throw error;
-      return data;
+      const payload = await authService.login(email, password);
+      setUser(payload.user);
+      return payload;
     } catch (err) {
       setError(err.message);
       throw err;
@@ -88,8 +60,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       setError(null);
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
+      await authService.logout();
       setUser(null);
     } catch (err) {
       setError(err.message);
@@ -100,8 +71,7 @@ export const AuthProvider = ({ children }) => {
   const resetPassword = async (email) => {
     try {
       setError(null);
-      const { error } = await supabase.auth.resetPasswordForEmail(email);
-      if (error) throw error;
+      await authService.resetPassword(email);
     } catch (err) {
       setError(err.message);
       throw err;

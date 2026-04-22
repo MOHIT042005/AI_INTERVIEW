@@ -1,51 +1,53 @@
-import { supabase } from '../config/supabase';
+import {
+  apiRequest,
+  clearStoredToken,
+  normalizeUser,
+  setStoredToken,
+} from '../config/api';
+
+const persistAuth = (payload) => {
+  if (payload?.token) {
+    setStoredToken(payload.token);
+  }
+
+  return {
+    ...payload,
+    user: normalizeUser(payload?.user),
+  };
+};
 
 export const authService = {
   signup: async (email, password, fullName) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          full_name: fullName,
-        },
-      },
+    const payload = await apiRequest('/auth/signup', {
+      method: 'POST',
+      body: JSON.stringify({ email, password, fullName }),
     });
 
-    if (error) throw error;
-
-    // Save user profile in public table
-    if (data.user) {
-      await supabase.from('profiles').insert([
-        {
-          id: data.user.id,
-          email: email,
-          full_name: fullName,
-          created_at: new Date(),
-        },
-      ]);
-    }
-
-    return data;
+    return persistAuth(payload);
   },
 
   login: async (email, password) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
+    const payload = await apiRequest('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
     });
 
-    if (error) throw error;
-    return data;
+    return persistAuth(payload);
+  },
+
+  getCurrentUser: async () => {
+    const payload = await apiRequest('/auth/me');
+    return normalizeUser(payload.user);
   },
 
   logout: async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
+    clearStoredToken();
   },
 
   resetPassword: async (email) => {
-    const { error } = await supabase.auth.resetPasswordForEmail(email);
-    if (error) throw error;
+    await apiRequest('/auth/forgot-password', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    });
   },
 };

@@ -31,19 +31,19 @@ function FAQ() {
   ];
 
   return (
-    <div className="faq">
+    <div className="faq" id="faq">
       <h2>Frequently Asked Questions</h2>
       <p className="section-subtitle">Find answers to common questions about our platform</p>
-      
+
       <div className="faq-container">
         {faqs.map((faq, index) => (
           <div key={index} className="faq-item">
-            <button 
+            <button
               className={`faq-question ${expanded === index ? 'active' : ''}`}
               onClick={() => setExpanded(expanded === index ? null : index)}
             >
               <span>{faq.question}</span>
-              <span className="faq-toggle">{expanded === index ? '−' : '+'}</span>
+              <span className="faq-toggle">{expanded === index ? '-' : '+'}</span>
             </button>
             {expanded === index && (
               <div className="faq-answer">

@@ -1,6 +1,27 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const PRACTICE_MODES = [
+  {
+    type: 'quick',
+    title: 'Quick Practice',
+    description: '5-10 minute focused practice sessions',
+    cta: 'Start Quick Practice',
+  },
+  {
+    type: 'mock',
+    title: 'Full Interview',
+    description: 'Complete 45-60 minute mock interview',
+    cta: 'Start Full Interview',
+  },
+  {
+    type: 'skill',
+    title: 'Skill Builder',
+    description: 'Targeted practice for specific skills',
+    cta: 'Start Skill Builder',
+  },
+];
+
 export const PracticeTab = () => {
   const navigate = useNavigate();
 
@@ -11,28 +32,19 @@ export const PracticeTab = () => {
   return (
     <div className="practice-section">
       <h2>Practice Modes</h2>
+      <p className="section-copy">
+        Pick the amount of time and structure you want right now.
+      </p>
       <div className="practice-modes">
-        <div className="practice-card">
-          <h3>Quick Practice</h3>
-          <p>5-10 minute focused practice sessions</p>
-          <button onClick={() => startInterview('quick')} className="practice-btn">
-            Start Quick Practice
-          </button>
-        </div>
-        <div className="practice-card">
-          <h3>Full Interview</h3>
-          <p>Complete 45-60 minute mock interview</p>
-          <button onClick={() => startInterview('mock')} className="practice-btn">
-            Start Full Interview
-          </button>
-        </div>
-        <div className="practice-card">
-          <h3>Skill Builder</h3>
-          <p>Targeted practice for specific skills</p>
-          <button onClick={() => startInterview('skill')} className="practice-btn">
-            Start Skill Builder
-          </button>
-        </div>
+        {PRACTICE_MODES.map((mode) => (
+          <div key={mode.type} className="practice-card">
+            <h3>{mode.title}</h3>
+            <p>{mode.description}</p>
+            <button onClick={() => startInterview(mode.type)} className="practice-btn">
+              {mode.cta}
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );

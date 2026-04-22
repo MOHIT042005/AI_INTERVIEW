@@ -23,7 +23,7 @@ function ForgotPassword() {
     try {
       setLoading(true);
       await resetPassword(email.trim());
-      setSuccess('Password reset link sent. Check your email and follow the instructions.');
+      setSuccess('If that account exists, a reset request has been recorded.');
     } catch (err) {
       setError(err.message || 'Unable to send reset email right now.');
     } finally {
