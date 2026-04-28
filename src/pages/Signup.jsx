@@ -59,16 +59,15 @@ function Signup() {
     <div className="auth-container auth-shell">
       <div className="auth-hero-panel">
         <span className="eyebrow">Get Started</span>
-        <h1>Build an interview habit that compounds every week</h1>
+        <h1>Build an interview habit you can actually keep</h1>
         <p>
-          Create your account to unlock guided practice, interview history, and a dashboard
-          that makes progress visible.
+          Create your account to unlock guided practice, saved sessions, and clear progress tracking.
         </p>
       </div>
 
       <div className="auth-card">
         <h1>Create Account</h1>
-        <p className="auth-subtitle">Join thousands of professionals preparing for interviews</p>
+        <p className="auth-subtitle">Start practicing with a simpler interview workflow.</p>
 
         {error && <div className="auth-error">{error}</div>}
 

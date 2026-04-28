@@ -31,9 +31,12 @@ function FAQ() {
   ];
 
   return (
-    <div className="faq" id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <p className="section-subtitle">Find answers to common questions about our platform</p>
+    <section className="faq" id="faq">
+      <div className="section-heading">
+        <span className="section-badge">FAQ</span>
+        <h2>Common questions, answered simply</h2>
+        <p className="section-subtitle">Everything you need to know before you start practicing seriously.</p>
+      </div>
 
       <div className="faq-container">
         {faqs.map((faq, index) => (
@@ -43,7 +46,7 @@ function FAQ() {
               onClick={() => setExpanded(expanded === index ? null : index)}
             >
               <span>{faq.question}</span>
-              <span className="faq-toggle">{expanded === index ? '-' : '+'}</span>
+              <span className="faq-toggle">{expanded === index ? "-" : "+"}</span>
             </button>
             {expanded === index && (
               <div className="faq-answer">
@@ -53,7 +56,7 @@ function FAQ() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

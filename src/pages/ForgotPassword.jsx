@@ -35,10 +35,9 @@ function ForgotPassword() {
     <div className="auth-container auth-shell">
       <div className="auth-hero-panel">
         <span className="eyebrow">Recovery</span>
-        <h1>Get back into your interview workspace</h1>
+        <h1>Get back into your account</h1>
         <p>
-          We will send a reset link so you can update your password and return to your
-          dashboard without creating a new account.
+          We will send a reset link so you can update your password and return to your dashboard.
         </p>
       </div>
 

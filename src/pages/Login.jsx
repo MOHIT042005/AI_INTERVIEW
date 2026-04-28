@@ -60,16 +60,15 @@ function Login() {
     <div className="auth-container auth-shell">
       <div className="auth-hero-panel">
         <span className="eyebrow">Practice Smarter</span>
-        <h1>Welcome back to your interview command center</h1>
+        <h1>Welcome back to your interview workspace</h1>
         <p>
-          Review progress, launch fresh mock rounds, and keep your momentum going with a
-          cleaner workflow.
+          Review progress, start a fresh round, and keep your prep moving.
         </p>
       </div>
 
       <div className="auth-card">
         <h1>Welcome Back</h1>
-        <p className="auth-subtitle">Login to continue your interview preparation</p>
+        <p className="auth-subtitle">Log in to continue your interview prep.</p>
 
         {error && <div className="auth-error">{error}</div>}
         {success && <div className="auth-success">{success}</div>}

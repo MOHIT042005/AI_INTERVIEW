@@ -7,7 +7,7 @@ import { OverviewTab } from '../components/OverviewTab';
 import { HistoryTab } from '../components/HistoryTab';
 import { AnalyticsTab } from '../components/AnalyticsTab';
 import { PracticeTab } from '../components/PracticeTab';
-import { deriveDashboardMetrics } from '../utils/dashboardMetrics';
+import { deriveDashboardMetrics, getTrackedInterviews } from '../utils/dashboardMetrics';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -36,13 +36,14 @@ function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');
   const location = useLocation();
   const completionState = location.state;
-  const metrics = useMemo(() => deriveDashboardMetrics(interviews), [interviews]);
+  const trackedInterviews = useMemo(() => getTrackedInterviews(interviews), [interviews]);
+  const metrics = useMemo(() => deriveDashboardMetrics(trackedInterviews), [trackedInterviews]);
   const latestCompletedScore = completionState?.interviewComplete
     ? completionState.score
     : metrics.latestCompletedScore;
-  const headline = interviews.length > 0
-    ? 'Keep the streak alive and sharpen the weak spots.'
-    : 'Start your first mock session and build your interview baseline.';
+  const headline = trackedInterviews.length > 0
+    ? 'Review progress and keep improving the weak spots.'
+    : 'Start your first mock session and set a baseline.';
   const tabs = [
     { id: 'overview', label: 'Overview' },
     { id: 'history', label: 'Interview History' },
@@ -104,8 +105,7 @@ function Dashboard() {
 
         {completionState?.interviewComplete && (
           <div className="inline-banner">
-            <strong>Interview completed.</strong> Your {completionState.type} session scored{' '}
-            {completionState.score}% and has been added to your history.
+            <strong>Interview completed.</strong> Your {completionState.type} session scored {completionState.score}%.
           </div>
         )}
 
@@ -121,19 +121,18 @@ function Dashboard() {
           ))}
         </div>
 
-        {interviews.length === 0 && activeTab === 'overview' && (
+        {trackedInterviews.length === 0 && activeTab === 'overview' && (
           <section className="empty-spotlight">
             <span className="eyebrow">First Session</span>
             <h3>No interviews yet</h3>
             <p>
-              Start with a technical or behavioral round to unlock analytics, history, and
-              progress trends across your sessions.
+              Start with a technical or behavioral round to unlock analytics and session history.
             </p>
           </section>
         )}
 
-        {activeTab === 'overview' && <OverviewTab interviews={interviews} metrics={metrics} />}
-        {activeTab === 'history' && <HistoryTab interviews={interviews} />}
+        {activeTab === 'overview' && <OverviewTab interviews={trackedInterviews} metrics={metrics} />}
+        {activeTab === 'history' && <HistoryTab interviews={trackedInterviews} />}
         {activeTab === 'analytics' && <AnalyticsTab metrics={metrics} />}
         {activeTab === 'practice' && <PracticeTab />}
       </div>

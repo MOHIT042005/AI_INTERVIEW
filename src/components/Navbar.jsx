@@ -41,6 +41,10 @@ function Navbar() {
         <span className="logo-tag">Mock interviews that feel focused</span>
       </div>
 
+      <div className="nav-center-mark" aria-hidden="true">
+        <span />
+      </div>
+
       <button
         className="menu-toggle"
         type="button"
@@ -69,6 +73,7 @@ function Navbar() {
       </div>
 
       <div className={`nav-auth ${menuOpen ? 'open' : ''}`}>
+        {!isAuthenticated && <span className="nav-status">Premium practice</span>}
         {isAuthenticated ? (
           <>
             <div className="user-info">

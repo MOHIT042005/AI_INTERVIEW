@@ -3,46 +3,59 @@ import React from "react";
 function Testimonials() {
   const testimonials = [
     {
-      quote: "This platform helped me land a job at a top tech company. The feedback is incredibly accurate and detailed.",
+      quote: "The mock flow helped me answer with a lot more structure.",
       name: "Priya Sharma",
       role: "Software Engineer at Google",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+      outcome: "Offer in 5 weeks",
+      initials: "PS"
     },
     {
-      quote: "I improved my interview skills drastically. The AI feedback caught things I wouldn't have noticed myself.",
+      quote: "The feedback caught where I sounded vague, and that made my next round much stronger.",
       name: "Rahul Patel",
       role: "Full Stack Developer",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+      outcome: "Confidence score +18%",
+      initials: "RP"
     },
     {
-      quote: "Worth every penny. The question variety and analysis quality are unmatched in the market.",
+      quote: "The saved feedback made my final-round prep feel much less chaotic.",
       name: "Anjali Singh",
       role: "Product Manager at Amazon",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
+      outcome: "Final-round prep reset",
+      initials: "AS"
     }
   ];
 
   return (
-    <div className="testimonials">
-      <h2>What Our Users Say</h2>
-      <p className="section-subtitle">Join thousands of professionals who've improved their interview skills</p>
-      
+    <section className="testimonials">
+      <div className="section-heading">
+        <span className="section-badge">Social proof</span>
+        <h2>What focused practice feels like for real users</h2>
+        <p className="section-subtitle">
+          Join professionals using structured repetition and AI feedback to sharpen performance.
+        </p>
+      </div>
+
       <div className="testimonials-grid">
-        {testimonials.map((testimonial, index) => (
-          <div key={index} className="testimonial-card">
-            <div className="stars">★★★★★</div>
+        {testimonials.map((testimonial) => (
+          <article key={testimonial.name} className="testimonial-card">
+            <div className="testimonial-topline">
+              <span className="stars">4.9/5 rating</span>
+              <span className="testimonial-outcome">{testimonial.outcome}</span>
+            </div>
             <p className="quote">"{testimonial.quote}"</p>
             <div className="testimonial-author">
-              <img src={testimonial.image} alt={testimonial.name} className="author-image" />
+              <div className="testimonial-avatar" aria-hidden="true">
+                {testimonial.initials}
+              </div>
               <div>
                 <h4>{testimonial.name}</h4>
                 <p>{testimonial.role}</p>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

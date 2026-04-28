@@ -113,7 +113,7 @@ function Results() {
         <div>
           <span className="eyebrow">Session Complete</span>
           <h1>{type} interview review</h1>
-          <p>Your latest mock is now saved. Use this summary to decide what to practice next.</p>
+          <p>Your latest mock is saved. Use this summary to decide what to practice next.</p>
         </div>
         <div className={`results-score-card ${scoreTone}`}>
           <span>Overall Score</span>
@@ -154,7 +154,7 @@ function Results() {
               ))
             ) : (
               <div className="results-list-item">
-                Keep practicing with stronger examples and clearer answer structure to create sharper feedback signals.
+                Keep practicing with stronger examples and clearer answer structure.
               </div>
             )}
           </div>
@@ -164,7 +164,7 @@ function Results() {
       <section className="results-panel">
         <div className="results-panel-head">
           <h2>Answer recap</h2>
-          <p>Review the way you responded so you can spot patterns before the next round.</p>
+          <p>Review your responses before the next round.</p>
         </div>
         <div className="results-answer-list">
           {answers.length > 0 ? (

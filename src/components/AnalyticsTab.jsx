@@ -15,12 +15,16 @@ const lineOptions = {
       max: 100,
       ticks: {
         stepSize: 20,
+        color: 'rgba(238, 244, 255, 0.72)',
       },
       grid: {
-        color: 'rgba(15, 23, 42, 0.08)',
+        color: 'rgba(214, 228, 255, 0.10)',
       },
     },
     x: {
+      ticks: {
+        color: 'rgba(238, 244, 255, 0.68)',
+      },
       grid: {
         display: false,
       },
@@ -39,11 +43,17 @@ const barOptions = {
   scales: {
     y: {
       beginAtZero: true,
+      ticks: {
+        color: 'rgba(238, 244, 255, 0.72)',
+      },
       grid: {
-        color: 'rgba(15, 23, 42, 0.08)',
+        color: 'rgba(214, 228, 255, 0.10)',
       },
     },
     x: {
+      ticks: {
+        color: 'rgba(238, 244, 255, 0.68)',
+      },
       grid: {
         display: false,
       },
@@ -62,7 +72,7 @@ export const AnalyticsTab = ({ metrics }) => {
           <h2>Performance Analytics</h2>
         </div>
         <p className="section-copy">
-          These numbers now separate started sessions from completed reviews, so the counts and graphs stay accurate.
+          Track your score, time, and practice mix.
         </p>
       </div>
 
@@ -123,7 +133,7 @@ export const AnalyticsTab = ({ metrics }) => {
         <div className="analytics-empty">
           <span className="eyebrow">No Data Yet</span>
           <h3>Complete more interviews to unlock analytics</h3>
-          <p>Once you start and finish a few sessions, this area will show progress, duration, and format trends.</p>
+          <p>Finish a few sessions and this area will show progress and trends.</p>
         </div>
       )}
     </div>

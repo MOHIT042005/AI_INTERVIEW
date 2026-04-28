@@ -10,6 +10,21 @@ const TYPE_LABELS = {
 const isCompletedInterview = (interview) =>
   Boolean(interview?.completed_at || interview?.score !== null || interview?.feedback);
 
+const hasAnswerLog = (interview) =>
+  Array.isArray(interview?.answer_log) && interview.answer_log.length > 0;
+
+export const isTrackedInterview = (interview) =>
+  Boolean(
+    interview && (
+      isCompletedInterview(interview) ||
+      hasAnswerLog(interview) ||
+      Number(interview.duration || 0) > 0
+    )
+  );
+
+export const getTrackedInterviews = (interviews = []) =>
+  interviews.filter(isTrackedInterview);
+
 const formatSessionLabel = (value, fallbackIndex) => {
   if (!value) {
     return `Session ${fallbackIndex + 1}`;

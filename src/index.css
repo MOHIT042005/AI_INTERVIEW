@@ -2,7 +2,7 @@
   font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: light;
+  color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -13,18 +13,18 @@ a {
   font-weight: 500;
   text-decoration: inherit;
   transition: color 0.3s ease;
-  color: #0084d6;
+  color: #9ec5ff;
 }
 
 a:hover {
-  color: #0066b3;
+  color: #f1d69a;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  color: #2c3e50;
-  background: linear-gradient(135deg, #f8fafb 0%, #eef4f9 100%);
+  color: #eef4ff;
+  background: linear-gradient(180deg, #06111f 0%, #0a1729 100%);
 }
 
 h1 {
@@ -38,6 +38,6 @@ button {
 
 button:focus,
 button:focus-visible {
-  outline: 2px solid rgba(0, 132, 214, 0.5);
+  outline: 2px solid rgba(158, 197, 255, 0.65);
   outline-offset: 2px;
 }

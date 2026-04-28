@@ -105,13 +105,15 @@ function Interview() {
         evaluation = await aiService.evaluateInterview({
           type: interviewType,
           answers: submittedAnswers,
+          expectedQuestions: currentQuestions.length,
         });
       } catch (evaluationError) {
         console.error('Ollama evaluation failed, using fallback:', evaluationError);
         evaluation = aiService.getFallbackEvaluation(
           interviewType,
           submittedAnswers,
-          evaluationError.message
+          evaluationError.message,
+          currentQuestions.length
         );
       }
 
@@ -219,8 +221,7 @@ function Interview() {
             <span className="eyebrow">Live Session</span>
             <h1>{interviewType.charAt(0).toUpperCase() + interviewType.slice(1)} Interview</h1>
             <p>
-              Stay concise, keep your examples specific, and use the progress panel to pace
-              yourself.
+              Stay concise, keep examples specific, and pace yourself with the progress panel.
             </p>
 
             <div className="interview-sidebar-card">
@@ -265,7 +266,7 @@ function Interview() {
               <div className="answer-section">
                 <div className="answer-input">
                   <textarea
-                    placeholder="Structure your answer with context, approach, and outcome."
+                    placeholder="Write your answer with context, approach, and outcome."
                     rows="10"
                     value={draftAnswer}
                     onChange={(e) => setDraftAnswer(e.target.value)}
@@ -306,7 +307,7 @@ function Interview() {
 
             <div className="interview-card compact-card">
               <h3>Response tips</h3>
-              <p>Use one concrete example, explain your reasoning, and end with the result or tradeoff.</p>
+              <p>Use one clear example, explain your reasoning, and end with the result.</p>
               <div className="tips-row">
                 <span className="tip-chip">Situation</span>
                 <span className="tip-chip">Approach</span>

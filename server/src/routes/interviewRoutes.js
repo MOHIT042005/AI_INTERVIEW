@@ -22,6 +22,23 @@ router.post('/', requireAuth, async (req, res) => {
       return res.status(400).json({ message: 'Interview type is required' });
     }
 
+    // React Strict Mode can trigger duplicate startup requests in development.
+    // Reuse a very recent empty draft instead of creating duplicate shell records.
+    const recentDraft = await Interview.findOne({
+      user_id: req.user.id,
+      type,
+      duration: 0,
+      score: null,
+      feedback: '',
+      completed_at: null,
+      'answer_log.0': { $exists: false },
+      created_at: { $gte: new Date(Date.now() - 30 * 1000) },
+    }).sort({ created_at: -1 });
+
+    if (recentDraft) {
+      return res.json({ interview: recentDraft.toJSON() });
+    }
+
     const interview = await Interview.create({
       user_id: req.user.id,
       topic: `${type.charAt(0).toUpperCase()}${type.slice(1)} Interview`,

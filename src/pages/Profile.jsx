@@ -53,7 +53,7 @@ function Profile() {
         <div>
           <span className="eyebrow">Settings</span>
           <h1>Profile and account</h1>
-          <p>Keep your details current so your workspace feels personal and consistent.</p>
+          <p>Keep your details current so your workspace stays personal and consistent.</p>
         </div>
         <Link to="/dashboard" className="nav-btn dashboard-link">Back To Dashboard</Link>
       </section>
@@ -97,9 +97,9 @@ function Profile() {
         <article className="profile-card profile-side-card">
           <h2>Workspace tips</h2>
           <div className="results-list">
-            <div className="results-list-item">Run one timed session each week and one untimed session for review.</div>
-            <div className="results-list-item">Use the results screen after every mock to spot repeating weak points.</div>
-            <div className="results-list-item">Aim to improve one skill at a time instead of changing everything at once.</div>
+            <div className="results-list-item">Run one timed session each week and one review session.</div>
+            <div className="results-list-item">Use the results screen to spot repeating weak points.</div>
+            <div className="results-list-item">Improve one skill at a time instead of changing everything at once.</div>
           </div>
           <div className="profile-account-block">
             <span className="eyebrow">Account</span>

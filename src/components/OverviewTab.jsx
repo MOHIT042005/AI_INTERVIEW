@@ -68,7 +68,7 @@ export const OverviewTab = ({ interviews, metrics }) => {
                 <h2>Quick Start</h2>
               </div>
               <p className="section-copy">
-                Choose the format you want to practice and jump straight in.
+                Choose a format and begin.
               </p>
             </div>
             <div className="action-buttons action-buttons-rich">
@@ -85,14 +85,13 @@ export const OverviewTab = ({ interviews, metrics }) => {
             <section className="quick-actions dashboard-panel focus-panel">
               <div className="panel-head">
                 <div>
-                  <span className="eyebrow">Recommended Next</span>
-                  <h2>Current focus</h2>
-                </div>
-                <p className="section-copy">
-                  Your latest session was <strong>{recentInterview.topic}</strong>. Keep momentum by retrying the
-                  same format or balancing it with a different style of practice.
-                </p>
+                <span className="eyebrow">Recommended Next</span>
+                <h2>Current focus</h2>
               </div>
+              <p className="section-copy">
+                Your latest session was <strong>{recentInterview.topic}</strong>. Retry it or balance it with a different format.
+              </p>
+            </div>
               <div className="action-buttons">
                 <button onClick={() => startInterview(recentInterview.type)} className="action-btn">
                   Retry {recentInterview.type}
@@ -113,7 +112,7 @@ export const OverviewTab = ({ interviews, metrics }) => {
                 <h2>Latest interviews</h2>
               </div>
               <p className="section-copy">
-                A quick snapshot of your most recent sessions. Most practiced: {metrics.topPracticeType}.
+                Most practiced: {metrics.topPracticeType}.
               </p>
             </div>
             {interviews.length > 0 ? (

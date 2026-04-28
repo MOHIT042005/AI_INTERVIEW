@@ -33,7 +33,7 @@ export const PracticeTab = () => {
     <div className="practice-section">
       <h2>Practice Modes</h2>
       <p className="section-copy">
-        Pick the amount of time and structure you want right now.
+        Pick the amount of structure you want right now.
       </p>
       <div className="practice-modes">
         {PRACTICE_MODES.map((mode) => (

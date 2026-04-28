@@ -1,35 +1,55 @@
 function Features() {
+  const features = [
+    {
+      kicker: "Flow",
+      stat: "5 practice modes",
+      title: "Structured question tracks",
+      description:
+        "Move through technical, behavioral, mock, and skill-based rounds without planning every session yourself.",
+      note: "Role-based prompts keep practice focused."
+    },
+    {
+      kicker: "Feedback",
+      stat: "Actionable scoring",
+      title: "A tighter feedback loop after every attempt",
+      description:
+        "See where your answers felt strong or vague so your next round improves on something concrete.",
+      note: "Clarity and confidence are surfaced right away."
+    },
+    {
+      kicker: "Progress",
+      stat: "One clean history",
+      title: "Progress you can actually track",
+      description:
+        "Keep your sessions and scores in one place so momentum does not disappear between practice days.",
+      note: "Recent results make the next practice step obvious."
+    }
+  ];
+
   return (
-    <div className="features" id="features">
-      <h2>Why Choose Us</h2>
-      <p>Designed to make practice feel less intimidating and more repeatable.</p>
+    <section className="features" id="features">
+      <div className="section-heading">
+        <span className="section-badge">Why Intervio</span>
+        <h2>Practice with a system, not scattered prep</h2>
+        <p className="section-subtitle">
+          Designed to make interview prep feel calmer, sharper, and easier to repeat every week.
+        </p>
+      </div>
 
       <div className="feature-grid">
-        <div className="card">
-          <h3>Structured question sets</h3>
-          <p>
-            Practice technical, behavioral, mock, quick, and skill-focused rounds without
-            needing to plan the session yourself.
-          </p>
-        </div>
-
-        <div className="card">
-          <h3>Faster feedback loop</h3>
-          <p>
-            Review scores, comments, and focus areas after each session so you always know
-            what to improve next.
-          </p>
-        </div>
-
-        <div className="card">
-          <h3>Progress you can see</h3>
-          <p>
-            Keep a running history of sessions, scores, duration, and answer quality in one
-            simple workspace.
-          </p>
-        </div>
+        {features.map((feature) => (
+          <article key={feature.title} className="card">
+            <div className="card-head">
+              <span className="card-kicker">{feature.kicker}</span>
+              <span className="card-stat">{feature.stat}</span>
+            </div>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+            <p className="card-note">{feature.note}</p>
+          </article>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }
 

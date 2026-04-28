@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
+import "../styles/home.css";
 import Navbar from "../components/Navbar.jsx";
 import Hero from "../components/Hero.jsx";
-import Stats from "../components/Stats.jsx";
 import Features from "../components/Features.jsx";
 import HowItWorks from "../components/HowItWorks.jsx";
 import Testimonials from "../components/Testimonials.jsx";
@@ -25,13 +25,14 @@ function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <Stats />
-      <Features />
-      <HowItWorks />
-      <Testimonials />
-      <FAQ />
-      <Pricing />
+      <main className="home-page">
+        <Hero />
+        <Features />
+        <HowItWorks />
+        <Testimonials />
+        <FAQ />
+        <Pricing />
+      </main>
     </>
   );
 }
