@@ -971,3 +971,331 @@
     transform: none;
   }
 }
+
+/* ==================== LIGHT HOME REFRESH ==================== */
+.home-page {
+  padding: 0 0 80px;
+  color: #172033;
+}
+
+.home-page > section {
+  width: min(1180px, calc(100% - 40px));
+  margin-bottom: 28px;
+}
+
+.navbar {
+  top: 16px;
+  width: min(1180px, calc(100% - 32px));
+  padding: 14px 20px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.logo {
+  color: #172033;
+  letter-spacing: 0;
+}
+
+.logo-tag,
+.nav-status,
+.user-info {
+  color: #64748b;
+}
+
+.nav-center-mark span {
+  background: #dbeafe;
+}
+
+.nav-link {
+  color: #475569;
+  border-radius: 8px;
+}
+
+.nav-link:hover {
+  color: #2563eb;
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+
+.nav-status,
+.user-info,
+.menu-toggle {
+  border-color: #e2e8f0;
+  background: #f8fafc;
+}
+
+.menu-toggle {
+  color: #334155;
+}
+
+.login-link {
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+  background: #ffffff;
+}
+
+.dashboard-link,
+.start-btn,
+.hero-link.primary {
+  color: #ffffff;
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.16);
+}
+
+.login-link:hover {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.dashboard-link:hover,
+.start-btn:hover,
+.hero-link.primary:hover {
+  color: #ffffff;
+  background: #1d4ed8;
+  box-shadow: 0 12px 22px rgba(37, 99, 235, 0.18);
+}
+
+.logout-btn {
+  color: #b91c1c;
+  border-color: #fecaca;
+  background: #fff7f7;
+}
+
+.logout-btn:hover {
+  color: #ffffff;
+  background: #dc2626;
+}
+
+.hero,
+.features,
+.how-it-works,
+.testimonials,
+.faq,
+.pricing {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+}
+
+.hero::before,
+.features::before,
+.how-it-works::before,
+.testimonials::before,
+.faq::before,
+.pricing::before,
+.card::before,
+.step-card::before,
+.testimonial-card::before,
+.price-card::before {
+  display: none;
+}
+
+.hero {
+  padding: 56px 44px;
+  gap: 36px;
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f8fbff 52%, #eff6ff 100%);
+}
+
+.features,
+.how-it-works,
+.testimonials,
+.faq,
+.pricing {
+  padding: 44px;
+}
+
+.hero h1,
+.section-heading h2,
+.card h3,
+.step-card h3,
+.testimonial-author h4,
+.price-card h3,
+.price-card h1,
+.hero-console-card-head strong,
+.hero-proof-item strong,
+.hero-score-copy strong,
+.hero-console-label,
+.hero-console-card h3 {
+  color: #172033;
+  letter-spacing: 0;
+}
+
+.hero p,
+.section-subtitle,
+.card p,
+.step-card p,
+.quote,
+.card-note,
+.price-note,
+.faq-answer,
+.testimonial-author p,
+.hero-proof-item span,
+.hero-console-card p,
+.price-billing,
+.pricing-footnote,
+.hero-console-list li,
+.price-features li,
+.hero-score-copy,
+.card-stat {
+  color: #475569;
+}
+
+.hero-eyebrow,
+.section-badge,
+.card-kicker,
+.price-pill,
+.step-caption,
+.testimonial-outcome,
+.price-save,
+.hero-session-chip,
+.hero-sidebar-pill {
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+  background: #dbeafe;
+  letter-spacing: 0;
+}
+
+.hero-link,
+.nav-btn,
+.start-btn,
+.price-btn {
+  border-radius: 8px;
+}
+
+.hero-link.secondary,
+.price-btn {
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+  background: #ffffff;
+}
+
+.hero-link.secondary:hover,
+.price-btn:hover {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.hero-pills span,
+.hero-proof-item,
+.hero-console,
+.hero-console-sidebar,
+.hero-console-card,
+.hero-score-badge,
+.hero-score-track,
+.card,
+.step-card,
+.testimonial-card,
+.faq-item,
+.price-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.hero-proof-item,
+.hero-console-sidebar,
+.hero-console-card,
+.hero-score-track {
+  background: #f8fafc;
+}
+
+.hero-console-top {
+  border-bottom-color: #e2e8f0;
+}
+
+.hero-console-status {
+  color: #047857;
+  background: #dcfce7;
+}
+
+.hero-console-heading,
+.hero-mini-label {
+  color: #64748b;
+}
+
+.hero-score-badge {
+  color: #2563eb;
+  background: #dbeafe;
+}
+
+.hero-score-track span {
+  background: linear-gradient(90deg, #2563eb, #0f766e);
+}
+
+.hero-console-list li::before,
+.price-features li::before {
+  background: #2563eb;
+  box-shadow: none;
+}
+
+.card,
+.testimonial-card,
+.price-card,
+.step-card {
+  padding: 22px;
+}
+
+.step-number {
+  color: #2563eb;
+  letter-spacing: 0;
+}
+
+.stars {
+  color: #1d4ed8;
+}
+
+.testimonial-avatar {
+  color: #1e3a8a;
+  background: #dbeafe;
+}
+
+.faq-question {
+  color: #172033;
+}
+
+.faq-question:hover,
+.faq-question.active {
+  background: #eff6ff;
+}
+
+.faq-toggle {
+  color: #2563eb;
+  background: #dbeafe;
+}
+
+.price-card.highlight {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  transform: translateY(-4px);
+}
+
+@media (max-width: 768px) {
+  .home-page > section,
+  .navbar {
+    width: min(100%, calc(100% - 24px));
+  }
+
+  .hero,
+  .features,
+  .how-it-works,
+  .testimonials,
+  .faq,
+  .pricing {
+    padding: 28px 20px;
+  }
+
+  .nav-links.open,
+  .nav-auth.open {
+    gap: 10px;
+  }
+
+  .price-card.highlight {
+    transform: none;
+  }
+}

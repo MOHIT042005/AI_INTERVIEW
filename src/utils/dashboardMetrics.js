@@ -84,8 +84,8 @@ export const deriveDashboardMetrics = (interviews = []) => {
         {
           label: 'Score',
           data: scoreTrendSessions.map((item) => item.score || 0),
-          borderColor: '#0b84d8',
-          backgroundColor: 'rgba(11, 132, 216, 0.16)',
+          borderColor: '#2563eb',
+          backgroundColor: 'rgba(37, 99, 235, 0.1)',
           borderWidth: 3,
           tension: 0.35,
           fill: true,
@@ -100,7 +100,7 @@ export const deriveDashboardMetrics = (interviews = []) => {
         {
           label: 'Duration (min)',
           data: durationTrendSessions.map((item) => item.duration || 0),
-          backgroundColor: 'rgba(19, 59, 92, 0.82)',
+          backgroundColor: 'rgba(59, 130, 246, 0.55)',
           borderRadius: 10,
           maxBarThickness: 34,
         },
@@ -112,7 +112,7 @@ export const deriveDashboardMetrics = (interviews = []) => {
         {
           label: 'Sessions',
           data: Object.values(typeCounts),
-          backgroundColor: ['#0b84d8', '#14b8a6', '#f59e0b', '#8b5cf6', '#ef4444', '#334155'],
+          backgroundColor: ['#2563eb', '#0f766e', '#f59e0b', '#7c3aed', '#dc2626', '#64748b'],
           borderRadius: 10,
           maxBarThickness: 38,
         },

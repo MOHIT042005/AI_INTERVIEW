@@ -15,15 +15,15 @@ const lineOptions = {
       max: 100,
       ticks: {
         stepSize: 20,
-        color: 'rgba(238, 244, 255, 0.72)',
+        color: 'rgba(71, 85, 105, 0.9)',
       },
       grid: {
-        color: 'rgba(214, 228, 255, 0.10)',
+        color: 'rgba(148, 163, 184, 0.22)',
       },
     },
     x: {
       ticks: {
-        color: 'rgba(238, 244, 255, 0.68)',
+        color: 'rgba(71, 85, 105, 0.85)',
       },
       grid: {
         display: false,
@@ -44,15 +44,15 @@ const barOptions = {
     y: {
       beginAtZero: true,
       ticks: {
-        color: 'rgba(238, 244, 255, 0.72)',
+        color: 'rgba(71, 85, 105, 0.9)',
       },
       grid: {
-        color: 'rgba(214, 228, 255, 0.10)',
+        color: 'rgba(148, 163, 184, 0.22)',
       },
     },
     x: {
       ticks: {
-        color: 'rgba(238, 244, 255, 0.68)',
+        color: 'rgba(71, 85, 105, 0.85)',
       },
       grid: {
         display: false,

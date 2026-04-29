@@ -4448,3 +4448,549 @@ body {
     flex-direction: column;
   }
 }
+
+/* ==================== LIGHT CLEAN UI REFRESH ==================== */
+:root {
+  --bg-main: #f6f9fc;
+  --bg-soft: #eef6ff;
+  --bg-elevated: rgba(255, 255, 255, 0.92);
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+  --surface-tint: #eff6ff;
+  --text-main: #172033;
+  --text-soft: #475569;
+  --text-muted: #64748b;
+  --brand: #2563eb;
+  --brand-strong: #1d4ed8;
+  --brand-deep: #1e3a8a;
+  --brand-soft: #dbeafe;
+  --accent: #0f766e;
+  --accent-soft: #ccfbf1;
+  --glow: rgba(37, 99, 235, 0.12);
+  --border: #e2e8f0;
+  --border-strong: #bfdbfe;
+  --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.07);
+  --shadow-strong: 0 18px 44px rgba(15, 23, 42, 0.1);
+}
+
+html {
+  background: #f6f9fc;
+}
+
+body {
+  color: var(--text-main);
+  background:
+    linear-gradient(180deg, #f8fbff 0%, #f6f9fc 44%, #eef6ff 100%);
+}
+
+body,
+button,
+input,
+textarea {
+  letter-spacing: 0;
+}
+
+.auth-container,
+.dashboard-container,
+.interview-container,
+.results-page,
+.profile-page,
+.state-screen {
+  width: min(1180px, calc(100% - 40px));
+  margin: 32px auto 56px;
+  color: var(--text-main);
+  background: transparent;
+}
+
+.auth-shell {
+  min-height: calc(100vh - 128px);
+  grid-template-columns: minmax(280px, 420px) minmax(360px, 480px);
+  gap: 28px;
+  align-items: center;
+}
+
+.auth-hero-panel,
+.auth-card,
+.dashboard-header,
+.dashboard-hero,
+.inline-banner,
+.dashboard-tabs,
+.empty-spotlight,
+.dashboard-panel,
+.analytics-section,
+.practice-section,
+.interview-history,
+.interview-sidebar,
+.interview-card,
+.results-hero,
+.results-panel,
+.profile-hero,
+.profile-card,
+.state-card,
+.analytics-empty {
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow-soft);
+}
+
+.auth-hero-panel,
+.dashboard-hero,
+.profile-side-card {
+  background:
+    linear-gradient(135deg, rgba(239, 246, 255, 0.98), rgba(255, 255, 255, 0.98));
+}
+
+.dashboard-header,
+.results-hero,
+.profile-hero,
+.auth-card,
+.state-card {
+  padding: 28px;
+}
+
+.auth-hero-panel {
+  padding: 32px;
+}
+
+.auth-hero-panel h1,
+.auth-card h1,
+.dashboard-header h1,
+.dashboard-hero h2,
+.results-hero h1,
+.profile-hero h1,
+.state-card h2,
+.interview-sidebar h1,
+.results-panel h2,
+.profile-card h2,
+.practice-section h2,
+.interview-history h2,
+.quick-actions h2,
+.recent-activity h2,
+.panel-head h2,
+.analytics-head h2,
+.empty-spotlight h3 {
+  color: var(--text-main);
+  letter-spacing: 0;
+}
+
+.auth-hero-panel h1,
+.dashboard-hero h2,
+.results-hero h1,
+.profile-hero h1 {
+  line-height: 1.14;
+}
+
+.auth-hero-panel p,
+.auth-subtitle,
+.auth-footer,
+.dashboard-header-subtitle,
+.dashboard-hero p,
+.results-hero p,
+.profile-hero p,
+.state-card p,
+.section-copy,
+.empty-spotlight p,
+.results-panel p,
+.profile-card p,
+.interview-sidebar p,
+.compact-card p,
+.practice-card p,
+.chart-card-head p,
+.history-details p,
+.results-answer-card p,
+.stat-note,
+.recent-item p,
+.answer-meta,
+.interview-progress p,
+.form-group small {
+  color: var(--text-soft);
+}
+
+.eyebrow,
+.hero-session-chip,
+.interview-type,
+.tip-chip,
+.card-note,
+.results-answer-index {
+  color: var(--brand-strong);
+  border: 1px solid var(--border-strong);
+  background: var(--brand-soft);
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+.form-group label {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.form-group input,
+.answer-input textarea {
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.form-group input::placeholder,
+.answer-input textarea::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:focus,
+.answer-input textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.form-group input:disabled {
+  color: var(--text-muted);
+  background: #f1f5f9;
+}
+
+.form-options label {
+  color: var(--text-soft);
+}
+
+.form-options label input {
+  accent-color: var(--brand);
+}
+
+.forgot-link,
+.auth-footer a {
+  color: var(--brand);
+}
+
+.auth-error,
+.auth-success {
+  border-radius: 8px;
+  border-left: none;
+}
+
+.auth-error {
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.auth-success {
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.auth-btn,
+.state-btn,
+.next-btn,
+.practice-btn,
+.finish-btn,
+.dashboard-link,
+.start-btn {
+  color: #ffffff;
+  border: 1px solid var(--brand);
+  border-radius: 8px;
+  background: var(--brand);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.16);
+}
+
+.record-btn,
+.action-btn,
+.price-btn,
+.history-link-btn,
+.login-link,
+.nav-btn {
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.record-btn,
+.action-btn,
+.price-btn,
+.history-link-btn,
+.login-link {
+  color: var(--brand);
+  border: 1px solid var(--border-strong);
+  background: #ffffff;
+}
+
+.logout-btn {
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  background: #fff7f7;
+}
+
+.auth-btn:hover:not(:disabled),
+.state-btn:hover,
+.next-btn:hover:not(:disabled),
+.practice-btn:hover,
+.finish-btn:hover,
+.dashboard-link:hover,
+.start-btn:hover {
+  color: #ffffff;
+  background: var(--brand-strong);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(37, 99, 235, 0.18);
+}
+
+.record-btn:hover,
+.action-btn:hover,
+.price-btn:hover,
+.history-link-btn:hover,
+.login-link:hover {
+  color: var(--brand-strong);
+  border-color: var(--brand);
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.logout-btn:hover {
+  color: #ffffff;
+  border-color: #dc2626;
+  background: #dc2626;
+}
+
+.dashboard-container,
+.interview-container,
+.results-page,
+.profile-page {
+  padding: 0;
+}
+
+.dashboard-header,
+.dashboard-hero,
+.results-hero,
+.profile-hero {
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.dashboard-hero-metrics,
+.dashboard-stats-grid,
+.analytics-summary-grid,
+.dashboard-main-grid,
+.practice-modes,
+.charts-container,
+.results-grid,
+.profile-grid {
+  gap: 20px;
+}
+
+.hero-metric,
+.stat-card,
+.recent-item,
+.analytics-mini-card,
+.chart-card,
+.practice-card,
+.results-score-card,
+.results-answer-card,
+.profile-account-block,
+.interview-sidebar-card,
+.history-item,
+.results-list-item {
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  box-shadow: none;
+}
+
+.hero-metric:nth-child(2),
+.hero-metric:nth-child(3),
+.profile-side-card,
+.results-score-card {
+  background: var(--surface-soft);
+}
+
+.hero-metric span,
+.analytics-mini-card span,
+.results-score-card span,
+.interview-sidebar-card span,
+.results-stats span,
+.stat-card h3 {
+  color: var(--text-muted);
+}
+
+.hero-metric strong,
+.analytics-mini-card strong,
+.results-score-card strong,
+.interview-sidebar-card strong,
+.results-stats strong,
+.stat-number,
+.interview-score {
+  color: var(--brand);
+}
+
+.dashboard-tabs {
+  width: fit-content;
+  gap: 6px;
+  padding: 6px;
+  margin-bottom: 24px;
+  background: #eef6ff;
+  box-shadow: none;
+}
+
+.dashboard-tabs button {
+  color: var(--text-soft);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+.dashboard-tabs button.active {
+  color: var(--brand-strong);
+  background: #ffffff;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.06);
+}
+
+.dashboard-tabs button:hover {
+  color: var(--brand);
+  background: #ffffff;
+}
+
+.dashboard-panel,
+.analytics-section,
+.practice-section,
+.interview-history,
+.results-panel,
+.profile-card,
+.empty-spotlight {
+  padding: 24px;
+}
+
+.inline-banner {
+  margin-bottom: 24px;
+  padding: 16px 18px;
+  color: #1e3a8a;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.action-buttons,
+.recent-list,
+.history-list,
+.results-answer-list,
+.results-list,
+.tips-row {
+  gap: 14px;
+}
+
+.action-btn {
+  padding: 16px 18px;
+  text-align: left;
+}
+
+.action-btn strong,
+.practice-card h3,
+.chart-card-head h3,
+.history-header h3,
+.results-answer-card h3,
+.interview-info h4,
+.compact-card h3,
+.question-section h2 {
+  color: var(--text-main);
+}
+
+.action-btn span {
+  color: var(--text-soft);
+}
+
+.interview-shell {
+  gap: 20px;
+}
+
+.interview-sidebar,
+.interview-card {
+  padding: 24px;
+}
+
+.interview-main {
+  gap: 20px;
+}
+
+.interview-card-accent {
+  border-color: var(--border-strong);
+  background: #eff6ff;
+}
+
+.progress-bar {
+  border: 1px solid var(--border);
+  background: #e2e8f0;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #2563eb, #0f766e);
+  box-shadow: none;
+}
+
+.answer-input textarea {
+  min-height: 260px;
+}
+
+.history-feedback {
+  color: var(--text-main);
+  border-radius: 8px;
+  background: #eff6ff;
+}
+
+.results-score-card.score-excellent strong {
+  color: #047857;
+}
+
+.results-score-card.score-good strong {
+  color: #2563eb;
+}
+
+.results-score-card.score-improving strong {
+  color: #b45309;
+}
+
+.spinner {
+  border-color: #dbeafe;
+  border-top-color: var(--brand);
+}
+
+@media (max-width: 1080px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-container,
+  .dashboard-container,
+  .interview-container,
+  .results-page,
+  .profile-page,
+  .state-screen {
+    width: min(100%, calc(100% - 24px));
+    margin: 20px auto 36px;
+  }
+
+  .auth-hero-panel,
+  .auth-card,
+  .dashboard-header,
+  .dashboard-hero,
+  .dashboard-panel,
+  .analytics-section,
+  .practice-section,
+  .interview-history,
+  .interview-sidebar,
+  .interview-card,
+  .results-hero,
+  .results-panel,
+  .profile-hero,
+  .profile-card,
+  .state-card {
+    padding: 20px;
+  }
+
+  .dashboard-tabs {
+    width: 100%;
+  }
+
+  .dashboard-tabs button {
+    flex: 1 1 100%;
+  }
+}
